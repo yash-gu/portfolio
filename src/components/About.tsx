@@ -1,16 +1,22 @@
-export default function About() {
+interface AboutProps {
+  isDark: boolean;
+}
+
+export default function About({ isDark }: AboutProps) {
   return (
     <section id="about" className="py-20 px-4 relative">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 font-display">
-          <span className="text-gradient">About Me</span>
+          <span className={isDark ? 'text-gradient' : 'text-gradient-light'}>About Me</span>
         </h2>
-        <p className="text-center text-slate-400 mb-12 max-w-2xl mx-auto">
+        <p className={`text-center mb-12 max-w-2xl mx-auto transition-theme ${
+          isDark ? 'text-slate-400' : 'text-slate-600'
+        }`}>
           My journey in computer science and technology
         </p>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 text-slate-300">
+          <div className={`space-y-6 transition-theme ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
             <p>
               I am a 19-year-old Computer Science student at Bennett University, specializing in solving complex problems through innovative coding solutions. My technical journey is fueled by expertise in Data Structures & Algorithms (DSA), competitive programming, and full-stack development.
             </p>
@@ -22,25 +28,20 @@ export default function About() {
             </p>
           </div>
 
-          <div className="glass rounded-2xl p-8 border border-teal-400/10">
-            <h3 className="text-2xl font-bold mb-6 text-gradient">Quick Stats</h3>
+          <div className={`rounded-2xl p-8 ${isDark ? 'glass-dark border-teal-400/20' : 'glass-light border-blue-400/20'}`}>
+            <h3 className={`text-2xl font-bold mb-6 ${isDark ? 'text-gradient' : 'text-gradient-light'}`}>Quick Stats</h3>
             <div className="space-y-4">
-              <div className="flex justify-between items-center pb-4 border-b border-slate-600">
-                <span className="text-slate-400">Current CGPA</span>
-                <span className="text-2xl font-bold text-teal-400">9.2/10</span>
-              </div>
-              <div className="flex justify-between items-center pb-4 border-b border-slate-600">
-                <span className="text-slate-400">LeetCode Problems</span>
-                <span className="text-2xl font-bold text-teal-400">200+</span>
-              </div>
-              <div className="flex justify-between items-center pb-4 border-b border-slate-600">
-                <span className="text-slate-400">CodeChef Rating</span>
-                <span className="text-2xl font-bold text-teal-400">1281</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-slate-400">Full-Stack Projects</span>
-                <span className="text-2xl font-bold text-teal-400">4+</span>
-              </div>
+              {[
+                { label: 'Current CGPA', value: '9.2/10' },
+                { label: 'LeetCode Problems', value: '200+' },
+                { label: 'CodeChef Rating', value: '1281' },
+                { label: 'Full-Stack Projects', value: '4+' },
+              ].map((stat) => (
+                <div key={stat.label} className={`flex justify-between items-center pb-4 border-b ${isDark ? 'border-slate-600' : 'border-slate-300'}`}>
+                  <span className={`transition-theme ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{stat.label}</span>
+                  <span className={`text-2xl font-bold transition-theme ${isDark ? 'text-teal-400' : 'text-blue-600'}`}>{stat.value}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
