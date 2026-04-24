@@ -43,7 +43,7 @@
   }
 
   .glass {
-    @apply dark:glass-dark light:glass-light;
+    @apply glass-light dark:glass-dark;
   }
 
   /* Smooth transitions */

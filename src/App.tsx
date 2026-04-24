@@ -39,10 +39,10 @@ export default function App() {
       <Hero isDark={isDark} />
       <About isDark={isDark} />
       <Skills isDark={isDark} />
-      <Projects isDark={isDark} />
-      <Achievements isDark={isDark} />
-      <Contact isDark={isDark} />
-      <Footer isDark={isDark} />
+      <Projects />
+      <Achievements />
+      <Contact />
+      <Footer />
     </div>
   );
 }
